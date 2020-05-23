@@ -1,3 +1,4 @@
 # Pong
 Creating a pong game with Python. 
-Adding paddles and the ball. 
+Added the paddles and the ball on a previous commit. 
+Adding code to allow for paddle movement. 
