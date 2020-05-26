@@ -1,5 +1,4 @@
 # Simple Pong in Python 3 for Beginners
-# Part 4: Moving the ball
 
 import turtle # Module to add graphics
 
@@ -34,8 +33,8 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 2.5 # Everytime our ball moves, it will move by this amount of pixels
-ball.dy = -2.5
+ball.dx = 3 # Everytime our ball moves, it will move by this amount of pixels
+ball.dy = -3
 
 
 # Function to allow for the two paddles to move up and down
@@ -75,18 +74,27 @@ while True:
     ball.sety(ball.ycor() + ball.dy)
 
     # Border Checking
-    if ball.ycor() > 290:
-        ball.sety(290)
+    if ball.ycor() > 300:
+        ball.sety(300)
         ball.dy *= -1 # Reverses the direction of the ball when it hits the top border
 
-    if ball.ycor() < -290:
-        ball.sety(-290)
+    if ball.ycor() < -300:
+        ball.sety(-300)
         ball.dy *= -1  # Reverses the direction of the ball when it hits the bottom border
 
-    if ball.xcor() > 390:
+    if ball.xcor() > 400:
         ball.goto(0, 0) # If ball goes off to the side, ball moves back to center
         ball.dx *= -1 # Reverses direction once ball moves back to center
 
-    if ball.xcor() < -390:
+    if ball.xcor() < -400:
         ball.goto(0, 0)
-        ball.dx *= -1 
+        ball.dx *= -1
+
+    # Paddle and ball collision
+    if (ball.xcor() > 365 and ball.xcor() < 375) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50):
+        ball.setx(365)
+        ball.dx *= -1
+
+    if (ball.xcor() < -365 and ball.xcor() > -375) and (ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50):
+        ball.setx(-365)
+        ball.dx *= -1
